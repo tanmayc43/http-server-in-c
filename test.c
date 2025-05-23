@@ -37,6 +37,9 @@ void launch(struct Server *server){
             body
         );
 
+        // header and body need clear seperation for response and hence the two \r\n are needed. smh.
+
+
         int response_len = strlen(response);
         write(new_socket, response, response_len);
         //write(new_socket, body, strlen(body));
