@@ -1,5 +1,5 @@
 #include <sys/socket.h>
-#include <netinet.h>
+#include <netinet/in.h>
 
 struct Server{
     int domain;
@@ -13,8 +13,7 @@ struct Server{
 
     int socket;
 
-    void (*launch)(void);
+    void (*launch)(struct Server *server);
 };
 
-struct Server server_constructor(int domain, int service, int protocol, int port, int backlog, u_long interface, void(*launch)(void));
-  
+struct Server server_constructor(int domain, int service, int protocol, u_long interface,  int port, int backlog, void(*launch)(struct Server *server));

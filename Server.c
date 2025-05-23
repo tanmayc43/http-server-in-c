@@ -3,8 +3,8 @@
 #include <stdlib.h>
 
 
-struct Server sever_constructor(int domain, int protocol, int port, int backlog, int service, u_long interface, void(*launch)(void)){
-    Struct Server server;
+struct Server server_constructor(int domain, int service, int protocol, u_long interface, int port, int backlog, void(*launch)(struct Server *server)){
+    struct Server server;
 
     server.domain = domain;
     server.protocol = protocol;
@@ -15,9 +15,9 @@ struct Server sever_constructor(int domain, int protocol, int port, int backlog,
     
     server.address.sin_family =  domain;
     server.address.sin_port = htons(port);
-    server.address.sin_addr.s_ddr = htonl(interface);
+    server.address.sin_addr.s_addr = htonl(interface);
     
-    server.socket = socket(domain, service, protocol)
+    server.socket = socket(domain, service, protocol);
 
     if(server.socket == 0){
         perror("Failed to connect to socket. \n");
