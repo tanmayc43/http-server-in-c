@@ -1,3 +1,6 @@
+#ifndef LINKED_LIST_H
+#define LINKED_LIST_H
+
 #include "../node.h"
 
 struct Linked_list{
@@ -14,3 +17,5 @@ struct Linked_list{
 
 struct Linked_list ll_constructor(void);
 void ll_destructor(struct Linked_list *ll);
+
+#endif //LINKED_LIST_H

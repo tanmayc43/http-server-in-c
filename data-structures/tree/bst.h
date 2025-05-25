@@ -1,3 +1,6 @@
+#ifndef BST_H
+#define BST_H
+
 #include "../node.h"
 
 
@@ -18,3 +21,5 @@ int bst_compare_int(void *data_one, void *data_two);
 int bst_compare_char(void *data_one, void *data_two);
 int bst_compare_float(void *data_one, void *data_two);
 int bst_compare_str(void *data_one, void *data_two);
+
+#endif //BST_H

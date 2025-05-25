@@ -1,3 +1,6 @@
+#ifndef DICTIONARY_H
+#define DICTIONARY_H
+
 #include "entry.h"
 #include "../tree/bst.h"
 #include "../linked-list/linked_list.h"
@@ -14,3 +17,5 @@ struct Dictionary dict_constructor(int(*compare)(void *x, void *y));
 void dict_destructor(struct Dictionary *dict);
 
 int compare_keys(void *x, void *y);
+
+#endif //DICTIONARY_H
