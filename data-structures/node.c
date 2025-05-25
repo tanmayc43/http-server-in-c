@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct Node node_constructor(void *data, u_long size){
+struct Node node_constructor(void *data, unsigned long size){
     if(size<1){
         perror("Invalid data size for node. \n");
         exit(1);
@@ -19,5 +19,5 @@ struct Node node_constructor(void *data, u_long size){
 
 void node_destructor(struct Node *node){
     free(node->data);
-    free(node)
+    free(node);
 }

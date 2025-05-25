@@ -4,13 +4,13 @@
 #include <string.h>
 
 
-struct Node * bst_node_constructor(void *data, u_long size);
+struct Node * bst_node_constructor(void *data, unsigned long size);
 void bst_node_destructor(struct Node  *node);
-struct Node * bst_iterator(struct Node *tree, struct Node *curr_node, void *data, int *direction);
-void bst_destructor(struct Node *node);
+struct Node * bst_iterator(struct bst *tree, struct Node *curr_node, void *data, int *direction);
+void bst_recursive_destructor(struct Node *node);
 
 void * bst_search(struct bst *tree, void *data);
-void bst_insert(struct bst *tree, void *data, u_long size);
+void bst_insert(struct bst *tree, void *data, unsigned long size);
 
 struct bst bst_constructor(int(*compare)(void *data_one, void *data_two)){
     struct bst tree;
@@ -22,15 +22,19 @@ struct bst bst_constructor(int(*compare)(void *data_one, void *data_two)){
     return tree;
 }
 
-void bst_destructor(struct bst tree) bst_recursive_destructor(tree.head)
+void bst_destructor(struct bst tree){
+    bst_recursive_destructor(tree.head);
+}
 
-struct Node * bst_node_constructor(void *data, u_long size){
+struct Node * bst_node_constructor(void *data, unsigned long size){
     struct Node *node = (struct Node *) malloc(sizeof(struct Node));
     *node = node_constructor(data, size);
     return node;
 }
 
-void bst_node_destructor(struct Node *node) node_destructor(node);
+void bst_node_destructor(struct Node *node){
+    node_destructor(node);
+}
 
 struct Node * bst_iterator(struct bst *tree, struct Node *curr_node, void *data, int *direction){
 
@@ -71,7 +75,7 @@ void * bst_search(struct bst *tree, void *data){
     else return NULL;
 }
 
-void * bst_insert(struct bst *tree, void *data, u_long size){
+void bst_insert(struct bst *tree, void *data, unsigned long size){
     if(!tree->head) tree->head = bst_node_constructor(data, size);
     else{
         int direction=0;

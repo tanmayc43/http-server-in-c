@@ -1,9 +1,9 @@
-#inclde "entry.h"
+#include "entry.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-struct Entry entry_constructor(void *key, u_long key_size, void *value, u_long value_size){
+struct Entry entry_constructor(void *key, unsigned long key_size, void *value, unsigned long value_size){
     struct Entry entry;
 
     entry.key = malloc(key_size);
