@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "../data-structures/dictionary/dictionary.h"
 
 enum HTTPmethods{
     GET,
@@ -13,9 +14,11 @@ enum HTTPmethods{
 };
 
 struct HTTPrequest{
-    int Method;
-    char *URI;
-    float HTTPversion;   
+
+    struct Dictionary request_line;
+    struct Dictionary header_fields;
+    struct Dictionary body;
+    
 };
 
 struct HTTPrequest http_request_constructor(char *request);
